@@ -17,6 +17,10 @@
     flex-direction: column;
 }
 
+body{
+     font-family: "Ubuntu";
+}
+
 #title{
     color: white;
     font-size: 40px
@@ -42,13 +46,13 @@ header{
 /*SIDEBAR SECTION*/
 
 .sidebar {
-    width: 400px;
+    width: 350px;
     height: 89vh;
     background-color: rgb(240, 233, 233);
     border-right: 3px solid rgb(4, 34, 19);
     padding: 20px;
     overflow: hidden;
-    gap: 100px;
+    gap: 50px;
 }
 
 .sidebar.hide {
@@ -108,6 +112,18 @@ svg {
 
 /*TODOS SECTION*/
 
+.project-heading, .todo {
+    width: 75%;
+    padding: 10px;
+    justify-content: space-between;
+    margin-top: 2px;
+}
+
+
+.add-todo-section {
+    gap: 0px;
+}
+
 .display-todos {
     margin-top: 10px;
     grid-area: todo;
@@ -124,10 +140,7 @@ svg {
 }
 
 .todo {
-    width: 75%;
     border-bottom: 1px solid black;
-    padding: 10px;
-    justify-content: space-between;
 }
 
 .todo-right svg {

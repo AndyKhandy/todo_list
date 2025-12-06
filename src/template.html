@@ -3,9 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Todo List</title>
 </head>
 <body>
-    
+    <header>
+
+        <div class="left-header flex flex-ali">
+            <img src="img/rowlet2.0.png" alt="picture of rowlet" width="100px">
+            <h1 id="title">Row-lets do</h1>
+        </div>
+
+    </header>
+
+    <div class="main-content">
+        <div class="sidebar show">
+
+            <div class="sidebar-project-section flex flex-col">
+
+                <div class="sidebar-project-title flex flex-ali">
+                    <h1>Projects</h1>
+                    <button id="add-project" class="add" >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" 
+                        /></svg>
+                    </button>
+                </div>
+        
+                    <div class="sidebar-tab flex current" id="inbox">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z" /></svg>
+                    <h2>Inbox</h2>
+                </div>
+
+                <div class="sidebar-tab flex" id="valorant">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z" /></svg>
+                    <h2>Valorant</h2>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="display-todos">
+
+        </div>
+    </div>
+
 </body>
 </html>

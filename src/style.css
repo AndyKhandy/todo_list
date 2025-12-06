@@ -25,6 +25,8 @@
 header{
     background-color: rgb(46, 200, 108);
     padding: 10px;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 6px 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 1vh;
 }
 
 .left-header{
@@ -40,27 +42,40 @@ header{
 /*SIDEBAR SECTION*/
 
 .sidebar {
-    width: max(25%, 250px);
-    height: 90vh;
+    width: 400px;
+    height: 89vh;
     background-color: rgb(240, 233, 233);
-    border-right: 4px solid rgb(4, 34, 19);
-    padding: 20px;;
+    border-right: 3px solid rgb(4, 34, 19);
+    padding: 20px;
+    overflow: hidden;
+    gap: 100px;
+}
+
+.sidebar.hide {
+    width: 0px;
+    padding: 0px;
+    border: none;
 }
 
 button {
-    background-color: transparent;
-    border: none;
     margin-top: 2px;
     cursor: pointer;
+    background-color: transparent;
+    border: none;
 }
 
-button:hover svg {
+.add {
+    border: none;
+}
+
+.add:hover svg, .delete-todo:hover svg {
     rotate: 180deg;
 }
 
 svg {
     width: 30px;
     transition: 1s;
+    cursor: pointer;
 }
 
 .sidebar-tab svg {
@@ -77,3 +92,54 @@ svg {
     background-color: rgba(34, 165, 34, 0.408);
     border-radius: 10px;
 }
+
+/*MAIN CONTENT*/
+
+.main-content {
+    display: grid;
+    grid-template-columns: auto repeat(4,1fr);
+    grid-template-areas:
+    "sidebar todo todo todo todo";
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+/*TODOS SECTION*/
+
+.display-todos {
+    margin-top: 10px;
+    grid-area: todo;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.todo .check {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.todo {
+    width: 75%;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.todo-right svg {
+    fill: var(--icon-color);
+}
+
+.edit-todo {
+    --icon-color: green;
+}
+
+.delete-todo {
+    --icon-color: red;
+}
+
+

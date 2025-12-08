@@ -44,9 +44,87 @@ header{
 /*DIALOG SECTION*/
 dialog {
     margin: 10% auto;
-    width: max(40%, 250px);
+    width: max(40%, 400px);
     height: 300px;
+    padding: 30px;
 }
+
+#select-priority {
+    width: auto;
+}
+
+
+dialog hr {
+    margin-bottom: 5px;
+}
+
+form {
+    position: relative;
+    height: 75%;
+    width: 100%;
+}
+
+form input, textarea, select {
+  font-family: inherit;
+  font-size: 20px;
+  width: 100%;
+  padding: 5px;
+  appearance: none;
+  border: none;
+  outline: none;
+
+}
+
+form input::placeholder {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: inherit;
+}
+
+.select {
+    position: absolute;
+    bottom: 0px;
+    font-size: 20px;
+}
+
+#select-priority {
+    outline:auto;
+}
+
+textarea {
+    resize: none;
+    height: 75px;
+}
+
+dialog h1 {
+    color: darkgreen;
+}
+
+.buttons {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    display: flex;
+    gap: 20px;
+}
+
+.buttons button {
+    font-family: inherit;
+    font-weight: bold;
+    padding: 5px;
+    transition: 0.3s;
+    background-color: transparent;
+    border: 2px solid black;
+    font-size: 15px;
+}
+
+.buttons button:hover {
+    transform: scale(1.2);
+    color: white;
+    background-color: green;
+    border-radius: 5px;
+}
+
 
 /*SIDEBAR SECTION*/
 
@@ -81,7 +159,7 @@ button, svg, .sidebar-tab {
     border: none;
 }
 
-.add:hover svg, .delete-todo:hover svg {
+.add:hover svg, .delete-todo:hover svg, .delete-project:hover svg{
     rotate: 180deg;
 }
 
@@ -100,12 +178,12 @@ svg {
     position: relative;
 }
 
-.delete-todo {
+.delete-project {
     position: absolute;
     right: 10px;
 }
 
-.delete-todo svg {
+.delete-project svg {
     visibility: none;
     opacity: 0;
     transition: 0.3s;

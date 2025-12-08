@@ -22,11 +22,36 @@
 
     <dialog id="create-project">
         <h1>Create Project</h1>
+        <hr>
         <form id="create-project-form" method="dialog">
-            <label for="project-name">Name:</label>
-            <input type="text" name="project-name" id="create-project-input" required placeholder="Calculas III">
-            <button formnovalidate>Cancel</button>
-            <button>Add Project</button>
+            <input type="text" name="project-name" id="create-project-input" required placeholder="Title: Calculas III">
+            <div class="buttons">
+                <button formnovalidate>Cancel</button>
+                <button>Add Project</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="create-todo">
+        <h1>Create Todo</h1>
+        <hr>
+        <form id="create-todo-form" method="dialog">
+            <input type="text" name="todo-name" id="create-todo-input" required placeholder="Title: Run for 30 Minutes">
+            <textarea name="todo-description" id="create-todo-description" placeholder="Details: Go on the viridian bike trail"></textarea>
+            <div class="select flex flex-ali">
+                <label for="select-priority">Priority:</label>
+            <select name="priority" id="select-priority">
+                <option value="low">Low</option>
+                <option value="medium">Med</option>
+                <option value="hard">Hard</option>
+            </select>
+            </div>
+
+            <div class="buttons">
+                <button formnovalidate>Cancel</button>
+                <button>Add Todo</button>
+            </div>
+
         </form>
     </dialog>
 
@@ -43,7 +68,7 @@
                         /></svg>
                 </div>
         
-                <div class="sidebar-tab flex flex-ali current" id="inbox">
+                <div class="sidebar-tab flex flex-ali current" id="Inbox">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z" /></svg>
                     <h2>Inbox</h2>
                 </div>

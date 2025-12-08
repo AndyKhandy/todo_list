@@ -20,5 +20,4 @@ export function setCurrentProject(projectTab)
             project.classList.remove("current");
         }
     }
-
 }

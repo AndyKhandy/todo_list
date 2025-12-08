@@ -56,14 +56,15 @@ dialog {
     background-color: rgb(240, 233, 233);
     border-right: 3px solid rgb(4, 34, 19);
     padding: 20px;
-    overflow: hidden;
     gap: 50px;
+    overflow-y:auto;
 }
 
 .sidebar.hide {
     width: 0px;
     padding: 0px;
     border: none;
+    overflow: hidden;
 }
 
 button, svg, .sidebar-tab {
@@ -96,7 +97,26 @@ svg {
 .sidebar-tab {
     padding: 10px;
     transition: 0.3s;
+    position: relative;
 }
+
+.delete-todo {
+    position: absolute;
+    right: 10px;
+}
+
+.delete-todo svg {
+    visibility: none;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.sidebar-tab:hover button svg {
+    fill: red;
+    visibility: visible;
+    opacity: 1;
+}
+
 
 .sidebar-tab:hover, .sidebar-tab.current {
     background-color: rgba(34, 165, 34, 0.408);
@@ -116,6 +136,10 @@ svg {
     grid-area: sidebar;
 }
 
+.display-todos {
+    grid-area: todo;
+}
+
 /*TODOS SECTION*/
 
 .project-heading, .todo {
@@ -130,12 +154,14 @@ svg {
     gap: 0px;
 }
 
-.display-todos {
+.display-todos, .todos {
     margin-top: 10px;
-    grid-area: todo;
     flex-direction: column;
     align-items: center;
+}
 
+.todos {
+    width: 100%;
 }
 
 .todo .check {

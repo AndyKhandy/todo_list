@@ -20,6 +20,16 @@
 
     </header>
 
+    <dialog id="create-project">
+        <h1>Create Project</h1>
+        <form id="create-project-form" method="dialog">
+            <label for="project-name">Name:</label>
+            <input type="text" name="project-name" id="create-project-input" required placeholder="Calculas III">
+            <button formnovalidate>Cancel</button>
+            <button>Add Project</button>
+        </form>
+    </dialog>
+
     <div class="main-content">
 
         <div class="sidebar flex flex-col ">
@@ -33,7 +43,7 @@
                         /></svg>
                 </div>
         
-                    <div class="sidebar-tab flex current" id="inbox">
+                <div class="sidebar-tab flex current" id="inbox">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z" /></svg>
                     <h2>Inbox</h2>
                 </div>

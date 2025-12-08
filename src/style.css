@@ -41,7 +41,12 @@ header{
     width: 70px;
     border-radius: 50%;
 }
-
+/*DIALOG SECTION*/
+dialog {
+    margin: 10% auto;
+    width: max(40%, 250px);
+    height: 300px;
+}
 
 /*SIDEBAR SECTION*/
 
@@ -61,9 +66,12 @@ header{
     border: none;
 }
 
-button {
-    margin-top: 2px;
+button, svg, .sidebar-tab {
     cursor: pointer;
+}
+
+.main-content button {
+    margin-top: 2px;
     background-color: transparent;
     border: none;
 }
@@ -79,7 +87,6 @@ button {
 svg {
     width: 30px;
     transition: 1s;
-    cursor: pointer;
 }
 
 .sidebar-tab svg {
@@ -88,7 +95,6 @@ svg {
 
 .sidebar-tab {
     padding: 10px;
-    cursor: pointer;
     transition: 0.3s;
 }
 

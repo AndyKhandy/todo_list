@@ -2,7 +2,7 @@
   "name": "webpack_template",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./js/index.js",
   "scripts": {
     "build": "webpack",
     "dev": "webpack serve",

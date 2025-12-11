@@ -1,9 +1,23 @@
+import {finishTodo, deleteTodo} from "./changeTodo.js";
+import {todos as todoList} from "./createTodo.js";
 
-export function displayTodo(todoList)
+const todosSection = document.querySelector(".todos");
+
+export function displayAllTodo(projectName)
 {
+    todosSection.innerHTML = "";
+
     for(let todo of todoList)
     {
-        const todosSection = document.querySelector(".todos");
+        if(todo.section == projectName || projectName == "Inbox")
+        {
+            displayNewTodo(todo, todosSection);
+        }
+    }
+}
+
+export function displayNewTodo(todo)
+{
 
         const newTodoSection = document.createElement("div");
         newTodoSection.classList.add("todo", "flex", "flex-ali");
@@ -15,14 +29,21 @@ export function displayTodo(todoList)
         const checkBtn = document.createElement("button");
         checkBtn.classList.add("check");
 
+        const priority = document.createElement("div");
+        priority.classList.add("priority");
+        priority.innerHTML = `<div class="priority"><p>${todo.priority}</p></div>`;
+        changePriorityColor(priority, todo.priority);
+
         const title = document.createElement("h2");
         title.textContent = todo.name;
 
         leftTodoSection.appendChild(checkBtn);
+        leftTodoSection.appendChild(priority);
         leftTodoSection.appendChild(title);
 
         const rightTodoSection = document.createElement("div");
         rightTodoSection.classList.add("todo-right", "flex", "flex-ali");
+
 
         const editBtn = document.createElement("button");
         editBtn.classList.add("edit-todo");
@@ -40,5 +61,29 @@ export function displayTodo(todoList)
 
         todosSection.appendChild(newTodoSection);
 
+        checkBtn.addEventListener("click", (e)=>{
+            finishTodo(e.currentTarget, title);
+        });
+
+        deleteBtn.addEventListener("click", ()=>{
+            deleteTodo(newTodoSection);
+        })
+}
+
+function changePriorityColor(priorityDiv, priorityValue)
+{
+    let color = null;
+
+    if(priorityValue == "low"){
+        color = "darkgreen";
     }
+    else if(priorityValue == "medium")
+    {
+        color = "darkorange";
+    }
+    else{
+        color = "red";
+    }
+
+    priorityDiv.style.backgroundColor = color;
 }

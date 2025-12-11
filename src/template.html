@@ -26,7 +26,7 @@
         <form id="create-project-form" method="dialog">
             <input type="text" name="project-name" id="create-project-input" required placeholder="Title: Calculas III">
             <div class="buttons">
-                <button formnovalidate>Cancel</button>
+                <button class="close" formnovalidate>Cancel</button>
                 <button>Add Project</button>
             </div>
         </form>
@@ -42,14 +42,14 @@
                 <div class="select flex flex-ali">
                 <label for="select-priority">Priority:</label>
             <select name="priority" id="select-priority">
-                <option value="low">Low</option>
+                <option value="low" selected>Low</option>
                 <option value="medium">Med</option>
                 <option value="hard">Hard</option>
             </select>
             </div>
 
             <div class="buttons">
-                <button formnovalidate>Cancel</button>
+                <button type="buton" class="close" formnovalidate>Cancel</button>
                 <button>Add Todo</button>
             </div>
 
@@ -100,9 +100,7 @@
 
         <div class="display-todos flex">
             <div class="project-heading flex flex-ali">
-                <h1 id="project-title">
-                Inbox
-                </h1>
+                <h1 id="project-title">Inbox</h1>
 
                 <div class="add-todo-section flex flex-ali">
                     <button id="add-todo" class="add" >

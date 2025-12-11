@@ -1,12 +1,12 @@
-import {displayTodo} from "./displayTodo.js";
+import {displayNewTodo} from "./displayTodo.js";
 
 const addTodo = document.querySelector("#add-todo");
 const todoForm = document.querySelector("#create-todo-form");
 
-let todos = [];
+export let todos = [];
 
 addTodo.addEventListener("click", showTodoDialog);
-todoForm.addEventListener("submit", createTodo);
+todoForm.addEventListener("submit", getTodoInfo);
 
 function showTodoDialog()
 {
@@ -14,21 +14,35 @@ function showTodoDialog()
     favDialog.showModal();
 }
 
-function createTodo()
+function getTodoInfo()
 {
-    const todoName = document.querySelector("#create-todo-input");
-    const todoDescript = document.querySelector("#create-todo-description");
-    const todoPriority = document.querySelector("#select-priority");
+    const todoName = document.querySelector("#create-todo-input").value;
+    const todoDescript = document.querySelector("#create-todo-description").value;
+    const todoPriority = document.querySelector("#select-priority").value;
+    const projectName = document.querySelector("#project-title").textContent;
+
+    if(todoName.value == "")
+    {
+        return;
+    }
+
+    createTodo(todoName,todoDescript,todoPriority,crypto.randomUUID(), projectName);
+
+    todoForm.reset();
+}
+
+function createTodo(name,description,priority,id, section)
+{
 
     let newTodo = {
-        name: todoName.value,
-        description: todoDescript.value,
-        priority: todoPriority.value,
-        id: crypto.randomUUID()
+        name,
+        description,
+        priority,
+        id,
+        section
     };
 
     todos.push(newTodo);
-    displayTodo(todos);
-    todoForm.reset();
+    displayNewTodo(newTodo);
 }
 

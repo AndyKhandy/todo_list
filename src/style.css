@@ -232,6 +232,15 @@ svg {
     gap: 0px;
 }
 
+.priority {
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 2px solid black;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+}
+
 .display-todos, .todos {
     margin-top: 10px;
     flex-direction: column;
@@ -247,6 +256,10 @@ svg {
     height: 30px;
     border-radius: 50%;
     border: 1px solid black;
+}
+
+.todo .check.checked {
+    background-color: darkgreen;
 }
 
 .todo {

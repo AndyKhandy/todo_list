@@ -21,14 +21,6 @@ class Todo {
     }
 }
 
-if (!localStorage.getItem("savedTodos")) {
-    localStorage.setItem("savedTodos", JSON.stringify([
-        { name: "Eat my veggies",description: "desc", priority: "low", dueDate: new Date(), id: crypto.randomUUID(), section: "Inbox", completed: false },
-        { name: "Play Valorant",description: "desc", priority: "low", dueDate: new Date(), id: crypto.randomUUID(), section: "Inbox", completed: false }
-    ]));
-    displayAllTodo("Inbox");
-}
-
 if(todos.length != 0)
 {
     let currentTodoProject = JSON.parse(localStorage.getItem("savedCurrentProject"));

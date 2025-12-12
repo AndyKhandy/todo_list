@@ -37,7 +37,7 @@ export function displayNewProject(project)
 
     sidebarTab.addEventListener("click", ()=>{
         setCurrentProject(project);
-        displayAllTodo(project.projectName);
+        displayAllTodo(project.projectName, false);
     });
 }
 

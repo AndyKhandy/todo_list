@@ -4,15 +4,41 @@ import { finishTodo, deleteTodo } from "./changeTodo.js";
 
 export const todosSection = document.querySelector(".todos");
 
-export function displayAllTodo(projectName)
+export function displayAllTodo(projectName, isOtherTab)
 {
     todosSection.innerHTML = "";
 
     for(let todo of todoList)
     {
-        if(todo.section == projectName || projectName == "Inbox")
-        {
+        if(!isOtherTab){
+            if(todo.section == projectName || projectName == "Inbox")
+            {
             displayNewTodo(todo);
+            }
+        }
+        else{
+            let splitDateMsg = todo.timeTilDue.split(" ");
+            let [ numberString, identifier ] = splitDateMsg;
+            let number = +numberString;
+
+            if(projectName == "Today")
+            {
+                if( (identifier == "days" && number == 1) || (identifier == "hours") || (identifier == "minutes") || (identifier == "seconds"))
+                {
+                    displayNewTodo(todo);
+                }
+            }
+            else if(projectName == "Week")
+            {
+                if( !(identifier == "days" && number > 7) )
+                {
+                    displayNewTodo(todo);
+                }
+            }
+            else{
+                displayNewTodo(todo);
+            }
+
         }
     }
 }

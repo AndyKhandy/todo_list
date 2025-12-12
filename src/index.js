@@ -19,3 +19,39 @@ inboxTab.addEventListener("click", () => {
     setCurrentProject(inboxObject);
     displayAllTodo("Inbox");
 });
+
+//OTHERS SECTION
+const todayTab = document.querySelector("#Today");
+const weekTab = document.querySelector("#Week");
+const monthTab = document.querySelector("#Month");
+
+todayTab.addEventListener("click", ()=>{
+    const todayObject = {
+        projectName: "Today",
+        projectId: 1,
+    };
+
+    setCurrentProject(todayObject);
+    displayAllTodo("Today", true);
+});
+
+
+weekTab.addEventListener("click", ()=>{
+    const weekObject = {
+        projectName: "Week",
+        projectId: 2,
+    };
+
+    setCurrentProject(weekObject);
+    displayAllTodo("Week", true);
+});
+
+monthTab.addEventListener("click", ()=>{
+    const monthObject = {
+        projectName: "Month",
+        projectId: 3,
+    };
+
+    setCurrentProject(monthObject);
+    displayAllTodo("Month", true);
+});

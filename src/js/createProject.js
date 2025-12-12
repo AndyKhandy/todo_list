@@ -11,7 +11,7 @@ if(projects.length != 0)
 {
     displayAllProjects();
     setCurrentProject(currentProject);
-    displayAllTodo(currentProject.projectName);
+    displayAllTodo(currentProject.projectName, false);
 }
 
 addProject.addEventListener("click", showProjectDialog);

@@ -30,7 +30,7 @@ if(todos.length != 0)
         displayAllTodo("Inbox");
     }
     else{
-        displayAllTodo(currentTodoProject.projectName);
+        displayAllTodo(currentTodoProject.projectName, false);
     }
 }
 

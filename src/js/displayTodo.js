@@ -1,11 +1,14 @@
 // src/js/displayTodo.js
 import { todos as todoList } from "./data.js";
 import { finishTodo, deleteTodo } from "./changeTodo.js";
-
+import { changeTodoNumber } from "./data.js";
 export const todosSection = document.querySelector(".todos");
+
+let count = 0;
 
 export function displayAllTodo(projectName, isOtherTab)
 {
+    count = 0;
     todosSection.innerHTML = "";
 
     for(let todo of todoList)
@@ -38,14 +41,13 @@ export function displayAllTodo(projectName, isOtherTab)
             else{
                 displayNewTodo(todo);
             }
-
         }
     }
+    changeTodoNumber(count);
 }
 
 export function displayNewTodo(todo)
 {
-
         const newTodoSection = document.createElement("div");
         newTodoSection.classList.add("todo", "flex", "flex-ali");
         newTodoSection.dataset.id = todo.id;
@@ -92,17 +94,28 @@ export function displayNewTodo(todo)
         todosSection.appendChild(newTodoSection);
 
         checkBtn.addEventListener("click", (e)=>{
+            if(!todo.completed)
+            {
+                changeTodoNumber(--count);
+            }
             finishTodo(e.currentTarget, title, todo);
         });
 
         deleteBtn.addEventListener("click", ()=>{
             deleteTodo(newTodoSection);
+            if(!todo.completed){
+                changeTodoNumber(--count);
+            }
         });
 
         if(todo.completed)
         {
             let done = new Event("click");
             checkBtn.dispatchEvent(done);
+        }
+        else{
+            count++;
+            changeTodoNumber(count);
         }
 }
 

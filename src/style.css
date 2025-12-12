@@ -4,6 +4,12 @@
     box-sizing: border-box;
 }
 
+:root {
+    --main-color: rgb(8, 98, 8);
+    --secondary-color: rgb(46, 200, 108);
+    --circle: 50%;
+}
+
 .flex {
     display: flex;
     gap: 10px;
@@ -27,7 +33,7 @@ body{
 }
 
 header{
-    background-color: rgb(46, 200, 108);
+    background-color: var(--secondary-color);
     padding: 10px;
     box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 6px 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 1vh;
@@ -39,7 +45,7 @@ header{
 
 .left-header img {
     width: 70px;
-    border-radius: 50%;
+    border-radius: var(--circle);
 }
 /*DIALOG SECTION*/
 dialog {
@@ -101,7 +107,7 @@ textarea {
 }
 
 dialog h1 {
-    color: darkgreen;
+    color: var(--main-color);
 }
 
 .buttons {
@@ -125,7 +131,7 @@ dialog h1 {
 .buttons button:hover {
     transform: scale(1.2);
     color: white;
-    background-color: green;
+    background-color: var(--secondary-color);
     border-radius: 5px;
 }
 
@@ -173,7 +179,7 @@ svg {
 }
 
 .sidebar-tab svg {
-    fill: rgb(19, 110, 19);
+    fill: var(--main-color);
 }
 
 .sidebar-tab {
@@ -231,6 +237,16 @@ svg {
     margin-top: 2px;
 }
 
+#amount-todo {
+    background-color: rgba(203, 198, 198, 0.992);
+    width: 40px;
+    height: 40px;
+    border-radius: var(--circle);
+    color: var(--main-color);
+    display: grid;
+    place-items: center;
+}
+
 
 .add-todo-section {
     gap: 0px;
@@ -258,12 +274,12 @@ svg {
 .todo .check {
     width: 30px;
     height: 30px;
-    border-radius: 50%;
+    border-radius: var(--circle);
     border: 1px solid black;
 }
 
 .todo .check.checked {
-    background-color: darkgreen;
+    background-color: var(--main-color);
 }
 
 .todo {
@@ -275,7 +291,7 @@ svg {
 }
 
 .edit-todo {
-    --icon-color: green;
+    --icon-color: var(--secondary-color);
 }
 
 .delete-todo {

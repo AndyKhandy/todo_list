@@ -40,7 +40,7 @@ todayTab.addEventListener("click", ()=>{
 weekTab.addEventListener("click", ()=>{
     const weekObject = {
         projectName: "Week",
-        projectId: 2,
+        projectId: 1,
     };
 
     setCurrentProject(weekObject);
@@ -50,7 +50,7 @@ weekTab.addEventListener("click", ()=>{
 monthTab.addEventListener("click", ()=>{
     const monthObject = {
         projectName: "Month",
-        projectId: 3,
+        projectId: 1,
     };
 
     setCurrentProject(monthObject);

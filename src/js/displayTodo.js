@@ -1,6 +1,6 @@
 // src/js/displayTodo.js
 import { todos as todoList } from "./data.js";
-import { finishTodo, deleteTodo } from "./changeTodo.js";
+import { finishTodo, openEditDialog, deleteTodo } from "./changeTodo.js";
 import { changeTodoNumber } from "./data.js";
 export const todosSection = document.querySelector(".todos");
 
@@ -99,6 +99,10 @@ export function displayNewTodo(todo)
                 changeTodoNumber(--count);
             }
             finishTodo(e.currentTarget, title, todo);
+        });
+
+        editBtn.addEventListener("click", ()=>{
+            openEditDialog(todo);
         });
 
         deleteBtn.addEventListener("click", ()=>{

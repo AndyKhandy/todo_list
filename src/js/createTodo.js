@@ -1,8 +1,7 @@
-import {displayNewTodo, displayAllTodo} from "./displayTodo.js";
-import { parseISO } from "date-fns";
+import {displayAllTodo} from "./displayTodo.js";
 import { changeLocalStorage } from "./localStorage.js";
 import { todos } from "./data.js";
-import { formatDistanceStrict } from "date-fns";
+import { parseISO, formatDistanceStrict } from "date-fns";
 
 const addTodo = document.querySelector("#add-todo");
 const todoForm = document.querySelector("#create-todo-form");
@@ -69,5 +68,5 @@ function createTodo(name,description,priority,dueDate, id, section)
 
     todos.push(newTodo);
     changeLocalStorage("savedTodos", todos);
-    displayNewTodo(newTodo);
+    displayAllTodo(section);
 }

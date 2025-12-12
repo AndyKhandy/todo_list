@@ -29,7 +29,7 @@
 
     </header>
 
-    <dialog id="create-project">
+    <dialog id="create-project" class="create">
         <h1>Create Project</h1>
         <hr>
         <form id="create-project-form" method="dialog">
@@ -41,7 +41,7 @@
         </form>
     </dialog>
 
-    <dialog id="create-todo">
+    <dialog id="create-todo" class="create">
         <h1>Create Todo</h1>
         <hr>
         <form id="create-todo-form" method="dialog">
@@ -66,6 +66,44 @@
             </div>
 
         </form>
+    </dialog>
+
+    <dialog id="edit-todo">
+        <h1>VIEW TODO</h1>
+        <hr>
+        <form id="edit-todo-form" class="flex flex-col" method="dialog">
+            
+            <div class="displaySection">
+                <h2>Todo Name</h2>
+                <input type="text" name="edit-name" id="edit-name">
+            </div>
+
+            <div class="displaySection">
+                <h2>Description</h2>
+                <textarea name="edit-description" id="edit-description"></textarea>
+            </div>
+
+            <div class="displaySection">
+                <h2>Due Date</h2>
+            <input type="datetime-local" name="edit-date" id="edit-date">
+            </div>
+
+            <div class="displaySection select flex flex-ali">
+                <h2>Priority</h2>
+            <select name="edit-priority" id="edit-priority">
+                <option value="low">Low</option>
+                <option value="med">Med</option>
+                <option value="high">High</option>
+            </select>
+            </div>
+
+
+            <div class="buttons">
+                <button class="close" formnovalidate>Cancel</button>
+                <button id="edit-submit">Change Todo</button>
+            </div>
+        </form>
+
     </dialog>
 
     <div class="main-content">

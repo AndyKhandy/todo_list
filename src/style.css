@@ -19,7 +19,7 @@
 
 :root.vulpix {
     --main-color: rgb(30, 79, 147);
-    --secondary-color: rgb(95, 219, 232);
+    --secondary-color: rgba(85, 194, 206, 0.83);
     --sidebar-hover: rgb(146, 209, 231);
 }
 
@@ -105,22 +105,32 @@ dialog {
     padding: 30px;
 }
 
-#select-priority {
+#select-priority, .displaySection select {
     width: auto;
+    outline: auto;
 }
 
+#edit-todo {
+    height: 500px;
+}
+
+.displaySection input, .displaySection textarea, input[type="datetime-local"] {
+    border: 2px solid black;
+    width: 50%;
+}
 
 dialog hr {
     margin-bottom: 5px;
 }
 
 form {
+    margin-top: 10px;
     position: relative;
-    height: 75%;
+    height: 80%;
     width: 100%;
 }
 
-form input, textarea, select, label {
+form input, textarea, select, label, .displaySection h2 {
   font-family: inherit;
   font-size: 20px;
   width: 100%;
@@ -130,10 +140,6 @@ form input, textarea, select, label {
   outline: none;
 }
 
-#due-date {
-    border: 2px solid black;
-    width: 50%;
-}
 
 form input::placeholder {
     text-transform: uppercase;
@@ -141,14 +147,10 @@ form input::placeholder {
     font-family: inherit;
 }
 
-.select {
+.select  {
     position: absolute;
     bottom: 0px;
     font-size: 20px;
-}
-
-#select-priority {
-    outline:auto;
 }
 
 textarea {

@@ -1,5 +1,8 @@
 import {displayNewTodo, displayAllTodo} from "./displayTodo.js";
 import { parseISO } from "date-fns";
+import { changeLocalStorage } from "./localStorage.js";
+import { todos } from "./data.js";
+import { formatDistanceStrict } from "date-fns";
 
 const addTodo = document.querySelector("#add-todo");
 const todoForm = document.querySelector("#create-todo-form");
@@ -14,15 +17,17 @@ class Todo {
         this.id = id;
         this.section = section;
         this.completed = false;
-    }
-
-    done()
-    {
-        this.completed = true;
+        this.timeTilDue = formatDistanceStrict(new Date(), dueDate);
     }
 }
 
-export let todos = JSON.parse(localStorage.getItem("savedTodos") || "[]");
+if (!localStorage.getItem("savedTodos")) {
+    localStorage.setItem("savedTodos", JSON.stringify([
+        { name: "Eat my veggies",description: "desc", priority: "low", dueDate: new Date(), id: crypto.randomUUID(), section: "Inbox", completed: false },
+        { name: "Play Valorant",description: "desc", priority: "low", dueDate: new Date(), id: crypto.randomUUID(), section: "Inbox", completed: false }
+    ]));
+    displayAllTodo("Inbox");
+}
 
 if(todos.length != 0)
 {
@@ -60,7 +65,6 @@ function getTodoInfo()
         return;
     }
 
-
     createTodo(todoName,todoDescript,todoPriority,dueDate,crypto.randomUUID(), projectName);
 
     todoForm.reset();
@@ -72,6 +76,6 @@ function createTodo(name,description,priority,dueDate, id, section)
     let newTodo = new Todo(name,description,priority,dueDate,id,section);
 
     todos.push(newTodo);
+    changeLocalStorage("savedTodos", todos);
     displayNewTodo(newTodo);
 }
-

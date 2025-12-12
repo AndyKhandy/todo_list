@@ -1,21 +1,21 @@
+// src/index.js
 import "./style.css";
-import "./js/createProject";
-import { setCurrentProject } from "./js/currentProject";
-import "./js/createTodo";
-import "./js/displayTodo";
-import { displayAllTodo } from "./js/displayTodo";
+import "./js/data.js"
+// Import modules
+import { displayAllTodo } from "./js/displayTodo.js";
+import { setCurrentProject } from "./js/currentProject.js";
+import "./js/createProject.js";
+import "./js/createTodo.js";
 
-
-/*INBOX SECTION*/
+// INBOX SECTION
 const inboxTab = document.querySelector("#Inbox");
 
-inboxTab.addEventListener("click", ()=>{
-    let inboxObject = {
+inboxTab.addEventListener("click", () => {
+    const inboxObject = {
         projectName: "Inbox",
         projectId: null
-    }
+    };
 
-    displayAllTodo("Inbox");
     setCurrentProject(inboxObject);
+    displayAllTodo("Inbox");
 });
-

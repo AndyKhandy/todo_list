@@ -1,17 +1,15 @@
-import { setCurrentProject } from "./currentProject";
-import { displayNewProject, displayAllProjects } from "./displayProject";
-import { displayAllTodo } from "./displayTodo";
-import { changeLocalStorage } from "./localStorage";
+import { setCurrentProject } from "./currentProject.js";
+import { displayNewProject, displayAllProjects } from "./displayProject.js";
+import { displayAllTodo } from "./displayTodo.js";
+import { changeLocalStorage } from "./localStorage.js";
+import { projects, currentProject } from "./data.js";
 
 const addProject = document.querySelector("#add-project");
 const projectForm = document.querySelector("#create-project-form");
 
-export let projects = JSON.parse(localStorage.getItem("savedProjects") || "[]");
-
 if(projects.length != 0)
 {
     displayAllProjects();
-    let currentProject = JSON.stringify(localStorage.getItem("savedCurrentProject"));
     setCurrentProject(currentProject);
     displayAllTodo(currentProject.projectName);
 }
@@ -40,9 +38,10 @@ export function createProject()
         projectId: crypto.randomUUID(),
     };
 
-
     projects.push(newProject);
+    changeLocalStorage("savedProjects", projects);
+
     displayNewProject(newProject, projects);
     setCurrentProject(newProject);
-    changeLocalStorage("savedCurrentProject", newProject)
+    displayAllTodo(newProject.projectName);
 }

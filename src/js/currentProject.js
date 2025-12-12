@@ -1,18 +1,19 @@
-
+import { currentProject } from "./data.js";
+import { changeLocalStorage } from "./localStorage.js";
 
 export function setCurrentProject(projectObject)
 {
     const allProjectTabs = document.querySelectorAll(".sidebar-tab");
-
     const projectTitle = document.querySelector("#project-title");
 
-    const projectName = projectObject.projectName;
-    
-    projectTitle.textContent = projectName;
+    currentProject.projectName = projectObject.projectName;
+    currentProject.projectId = projectObject.projectId || null;
+
+    projectTitle.textContent = currentProject.projectName;
 
     for(let project of allProjectTabs)
     {
-        if(project.id == projectName)
+        if(project.id == currentProject.projectName)
         {
             project.classList.add("current");
         }
@@ -20,4 +21,5 @@ export function setCurrentProject(projectObject)
             project.classList.remove("current");
         }
     }
+    changeLocalStorage("savedCurrentProject", currentProject);
 }

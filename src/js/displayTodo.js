@@ -1,8 +1,8 @@
-import {finishTodo, deleteTodo} from "./changeTodo.js";
-import {todos as todoList} from "./createTodo.js";
-import { formatDistanceStrict } from "date-fns";
+// src/js/displayTodo.js
+import { todos as todoList } from "./data.js";
+import { finishTodo, deleteTodo } from "./changeTodo.js";
 
-const todosSection = document.querySelector(".todos");
+export const todosSection = document.querySelector(".todos");
 
 export function displayAllTodo(projectName)
 {
@@ -12,7 +12,7 @@ export function displayAllTodo(projectName)
     {
         if(todo.section == projectName || projectName == "Inbox")
         {
-            displayNewTodo(todo, todosSection);
+            displayNewTodo(todo);
         }
     }
 }
@@ -45,9 +45,8 @@ export function displayNewTodo(todo)
         const rightTodoSection = document.createElement("div");
         rightTodoSection.classList.add("todo-right", "flex", "flex-ali");
 
-        const timeTilDue = formatDistanceStrict(new Date(), todo.dueDate);
         const dueParagraph = document.createElement("p");
-        dueParagraph.textContent = `Due in ${timeTilDue}`;
+        dueParagraph.textContent = `Due in ${todo.timeTilDue}`;
 
         const editBtn = document.createElement("button");
         editBtn.classList.add("edit-todo");

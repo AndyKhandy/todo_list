@@ -1,10 +1,12 @@
-import {todos} from "./createTodo.js"; 
+import {todos} from "./data.js"; 
+import { changeLocalStorage } from "./localStorage.js";
 
 export function finishTodo(checkBtn, titleElement, todoObject)
 {
     checkBtn.classList.add("checked");
     titleElement.style.textDecoration = "line-through";
-    todoObject.done();
+    todoObject.completed = true;
+    changeLocalStorage("savedTodos", todos);
 }
 
 export function deleteTodo(todoSection)
@@ -21,6 +23,7 @@ function removeTodoFromList(todoSection)
         if(todos[i].id == todoId)
         {
             todos.splice(i,1);
+            changeLocalStorage("savedTodos",todos);
             return;
         }
     }

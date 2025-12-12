@@ -7,7 +7,20 @@
 :root {
     --main-color: rgb(8, 98, 8);
     --secondary-color: rgb(46, 200, 108);
+    --sidebar-hover: rgba(34, 165, 34, 0.408);
     --circle: 50%;
+}
+
+:root.togepi {
+    --main-color:rgb(116, 105, 26);
+    --secondary-color: rgb(240, 207, 90);
+    --sidebar-hover: rgba(204, 187, 57, 0.388);
+}
+
+:root.vulpix {
+    --main-color: rgb(30, 79, 147);
+    --secondary-color: rgb(95, 219, 232);
+    --sidebar-hover: rgb(146, 209, 231);
 }
 
 .flex {
@@ -35,6 +48,7 @@ body{
 header{
     background-color: var(--secondary-color);
     padding: 10px;
+    justify-content: space-between;
     box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 6px 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 1vh;
 }
@@ -44,8 +58,44 @@ header{
 }
 
 .left-header img {
-    width: 70px;
+    width: 80px;
+    height: 80px;
     border-radius: var(--circle);
+    object-fit: cover;
+}
+
+.right-header {
+    margin-right: 2%;
+}
+
+.right-header button {
+    width: 75px;
+    height: 50px;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.7;
+    filter: grayscale(0.7);
+}
+
+.right-header button:hover {
+    opacity: 1;
+    filter: grayscale(0);
+}
+
+.right-header button.hidden {
+    visibility: hidden;
+}
+
+#rowlet {
+    background-image: url("./img/rowletBtn.jpg");
+}
+
+#togepi {
+    background-image: url("./img/togepiBtn.jpg");
+}
+
+#vulpix {
+    background-image: url("./img/vulpixBtn.jpg");
 }
 /*DIALOG SECTION*/
 dialog {
@@ -118,7 +168,7 @@ dialog h1 {
     gap: 20px;
 }
 
-.buttons button {
+button {
     font-family: inherit;
     font-weight: bold;
     padding: 5px;
@@ -126,13 +176,13 @@ dialog h1 {
     background-color: transparent;
     border: 2px solid black;
     font-size: 15px;
+    border-radius: 5px;
 }
 
 .buttons button:hover {
     transform: scale(1.2);
     color: white;
     background-color: var(--secondary-color);
-    border-radius: 5px;
 }
 
 
@@ -207,7 +257,7 @@ svg {
 
 
 .sidebar-tab:hover, .sidebar-tab.current {
-    background-color: rgba(34, 165, 34, 0.408);
+    background-color: var(--sidebar-hover);
     border-radius: 10px;
 }
 
@@ -238,7 +288,7 @@ svg {
 }
 
 #amount-todo {
-    background-color: rgba(203, 198, 198, 0.992);
+    background-color: rgba(232, 231, 231, 0.992);
     width: 40px;
     height: 40px;
     border-radius: var(--circle);

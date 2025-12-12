@@ -1,6 +1,7 @@
 // src/index.js
 import "./style.css";
-import "./js/data.js"
+import "./js/data.js";
+import "./js/setTheme.js";
 // Import modules
 import { displayAllTodo } from "./js/displayTodo.js";
 import { setCurrentProject } from "./js/currentProject.js";

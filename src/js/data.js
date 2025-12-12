@@ -24,6 +24,8 @@ export let currentProject = JSON.parse(localStorage.getItem("savedCurrentProject
 
 export let todoNumber = parseInt(localStorage.getItem("numberOfTodos"),10);
 
+changeTodoNumber(todoNumber);
+
 export function changeTodoNumber(amount)
 {
     localStorage.setItem("numberOfTodos", amount);

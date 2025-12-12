@@ -11,6 +11,10 @@ const rowletBtn = document.querySelector("#rowlet");
 const vulpixBtn = document.querySelector("#vulpix");
 const togepiBtn = document.querySelector("#togepi");
 
+let startingTheme = localStorage.getItem("savedThemeId") || "rowlet";
+
+changeTheme(startingTheme);
+
 rowletBtn.addEventListener("click", (e)=>{
     changeTheme(e.target.id);
 });
@@ -41,9 +45,10 @@ function changeTheme(id)
     }
     else{
        newPfp = rowletImg;
-        newTitle = "Row-lets Do";
+       newTitle = "Row-lets Do";
     }
     siteTitle.textContent = `| ${newTitle} |`;
     headingTitle.textContent = newTitle;
     profilePicture.src = newPfp;
+    localStorage.setItem("savedThemeId", id);
 }

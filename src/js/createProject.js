@@ -1,10 +1,20 @@
 import { setCurrentProject } from "./currentProject";
-import { displayNewProject } from "./displayProject";
+import { displayNewProject, displayAllProjects } from "./displayProject";
+import { displayAllTodo } from "./displayTodo";
+import { changeLocalStorage } from "./localStorage";
 
 const addProject = document.querySelector("#add-project");
 const projectForm = document.querySelector("#create-project-form");
 
-export let projects = [];
+export let projects = JSON.parse(localStorage.getItem("savedProjects") || "[]");
+
+if(projects.length != 0)
+{
+    displayAllProjects();
+    let currentProject = JSON.stringify(localStorage.getItem("savedCurrentProject"));
+    setCurrentProject(currentProject);
+    displayAllTodo(currentProject.projectName);
+}
 
 addProject.addEventListener("click", showProjectDialog);
 projectForm.addEventListener("submit",createProject);
@@ -30,7 +40,9 @@ export function createProject()
         projectId: crypto.randomUUID(),
     };
 
+
     projects.push(newProject);
     displayNewProject(newProject, projects);
     setCurrentProject(newProject);
+    changeLocalStorage("savedCurrentProject", newProject)
 }

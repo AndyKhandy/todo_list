@@ -39,14 +39,17 @@
             <input type="text" name="todo-name" id="create-todo-input" required placeholder="Title: Run for 30 Minutes">
             <textarea name="todo-description" id="create-todo-description" placeholder="Details: Go on the viridian bike trail"></textarea>
 
-                <div class="select flex flex-ali">
+            <div class="select flex flex-ali">
                 <label for="select-priority">Priority:</label>
             <select name="priority" id="select-priority">
                 <option value="low" selected>Low</option>
-                <option value="medium">Med</option>
-                <option value="hard">Hard</option>
+                <option value="med">Med</option>
+                <option value="high">High</option>
             </select>
             </div>
+
+            <label for="due-date">Due Date</label>
+            <input type="datetime-local" name="due-date" id="due-date" required>
 
             <div class="buttons">
                 <button type="buton" class="close" formnovalidate>Cancel</button>

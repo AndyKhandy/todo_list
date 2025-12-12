@@ -45,7 +45,7 @@ header{
 dialog {
     margin: 10% auto;
     width: max(40%, 400px);
-    height: 300px;
+    height: 350px;
     padding: 30px;
 }
 
@@ -64,7 +64,7 @@ form {
     width: 100%;
 }
 
-form input, textarea, select {
+form input, textarea, select, label {
   font-family: inherit;
   font-size: 20px;
   width: 100%;
@@ -72,7 +72,11 @@ form input, textarea, select {
   appearance: none;
   border: none;
   outline: none;
+}
 
+#due-date {
+    border: 2px solid black;
+    width: 50%;
 }
 
 form input::placeholder {
@@ -93,7 +97,7 @@ form input::placeholder {
 
 textarea {
     resize: none;
-    height: 75px;
+    height: 60px;
 }
 
 dialog h1 {

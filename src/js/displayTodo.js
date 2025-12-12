@@ -1,5 +1,6 @@
 import {finishTodo, deleteTodo} from "./changeTodo.js";
 import {todos as todoList} from "./createTodo.js";
+import { formatDistanceStrict } from "date-fns";
 
 const todosSection = document.querySelector(".todos");
 
@@ -31,7 +32,7 @@ export function displayNewTodo(todo)
 
         const priority = document.createElement("div");
         priority.classList.add("priority");
-        priority.innerHTML = `<div class="priority"><p>${todo.priority}</p></div>`;
+        priority.innerHTML = `<p>${todo.priority}</p>`;
         changePriorityColor(priority, todo.priority);
 
         const title = document.createElement("h2");
@@ -44,6 +45,9 @@ export function displayNewTodo(todo)
         const rightTodoSection = document.createElement("div");
         rightTodoSection.classList.add("todo-right", "flex", "flex-ali");
 
+        const timeTilDue = formatDistanceStrict(new Date(), todo.dueDate);
+        const dueParagraph = document.createElement("p");
+        dueParagraph.textContent = `Due in ${timeTilDue}`;
 
         const editBtn = document.createElement("button");
         editBtn.classList.add("edit-todo");
@@ -53,6 +57,7 @@ export function displayNewTodo(todo)
         deleteBtn.classList.add("delete-todo");
         deleteBtn.innerHTML = ` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18,19C18,20.66 16.66,22 15,22H8C6.34,22 5,20.66 5,19V7H4V4H8.5L9.5,3H13.5L14.5,4H19V7H18V19M6,7V19C6,20.1 6.9,21 8,21H15C16.1,21 17,20.1 17,19V7H6M18,6V5H14L13,4H10L9,5H5V6H18M8,9H9V19H8V9M14,9H15V19H14V9Z" /></svg>`;
 
+        rightTodoSection.appendChild(dueParagraph);
         rightTodoSection.appendChild(editBtn);
         rightTodoSection.appendChild(deleteBtn);
 
@@ -62,12 +67,18 @@ export function displayNewTodo(todo)
         todosSection.appendChild(newTodoSection);
 
         checkBtn.addEventListener("click", (e)=>{
-            finishTodo(e.currentTarget, title);
+            finishTodo(e.currentTarget, title, todo);
         });
 
         deleteBtn.addEventListener("click", ()=>{
             deleteTodo(newTodoSection);
-        })
+        });
+
+        if(todo.completed)
+        {
+            let done = new Event("click");
+            checkBtn.dispatchEvent(done);
+        }
 }
 
 function changePriorityColor(priorityDiv, priorityValue)
@@ -77,7 +88,7 @@ function changePriorityColor(priorityDiv, priorityValue)
     if(priorityValue == "low"){
         color = "darkgreen";
     }
-    else if(priorityValue == "medium")
+    else if(priorityValue == "med")
     {
         color = "darkorange";
     }

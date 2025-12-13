@@ -27,3 +27,10 @@ export function removeSideBar()
 {
     sidebar.classList.remove("active");
 }
+
+//DELETE LOCAL STORAGE
+const clearStorage = document.querySelector("#clearStorage")
+
+clearStorage.addEventListener("click", ()=>{
+    localStorage.clear();
+})

@@ -42,6 +42,19 @@ body{
      font-family: "Ubuntu";
 }
 
+#clearStorage {
+    position: absolute;
+    bottom: 15px;
+    right:15px;
+    transition: 1s;
+}
+
+#clearStorage:hover {
+    background-color:red;
+    color: white;
+    transform: scale(1.1);
+}
+
 h2{
     font-size: var(--medium-font-size);
 }
@@ -188,7 +201,7 @@ dialog h1 {
     gap: 20px;
 }
 
-button {
+button, #clearStorage {
     font-family: inherit;
     font-weight: bold;
     padding: 5px;
@@ -216,6 +229,7 @@ button {
     padding: 20px;
     gap: 50px;
     overflow-y:auto;
+    position: relative;
 }
 
 

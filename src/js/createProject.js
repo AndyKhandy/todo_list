@@ -11,7 +11,7 @@ if(projects.length != 0)
 {
     displayAllProjects();
     setCurrentProject(currentProject);
-    displayAllTodo(currentProject.projectName, false);
+    displayAllTodo(currentProject.projectName, currentProject.isOther);
 }
 
 addProject.addEventListener("click", showProjectDialog);
@@ -36,6 +36,7 @@ export function createProject()
     let newProject = {
         projectName,
         projectId: crypto.randomUUID(),
+        isOther: false,
     };
 
     projects.push(newProject);
@@ -43,5 +44,5 @@ export function createProject()
 
     displayNewProject(newProject, projects);
     setCurrentProject(newProject);
-    displayAllTodo(newProject.projectName);
+    displayAllTodo(newProject.projectName, newProject.isOther);
 }

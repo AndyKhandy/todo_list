@@ -16,6 +16,7 @@ export function finishTodo(checkBtn, titleElement, todoObject)
     changeLocalStorage("savedTodos", todos);
 }
 
+
 /*EDIT TODO SECTION*/
 let currentTodo = null;
 
@@ -89,11 +90,6 @@ function changeTodoObject(newName, newDescription, newPriority, newDueDate, todo
     todoObject.timeTilDue = formatDistanceStrict(new Date(), newDueDate);
 
     //GAVE ALL THE OTHER TABS A PROJECET ID OF 1
-    if(currentProject.projectId == 1){
-        displayAllTodo(currentProject.projectName, true)
-    }
-    else{
-        displayAllTodo(currentProject.projectName, false);
-    }
+    displayAllTodo(currentProject.projectName, currentProject.isOther)
     changeLocalStorage("savedTodos", todos);
 }

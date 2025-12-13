@@ -1,6 +1,6 @@
 import {displayAllTodo} from "./displayTodo.js";
 import { changeLocalStorage } from "./localStorage.js";
-import { todos } from "./data.js";
+import { todos, currentProject } from "./data.js";
 import { parseISO, formatDistanceStrict } from "date-fns";
 
 const addTodo = document.querySelector("#add-todo");
@@ -22,15 +22,7 @@ class Todo {
 
 if(todos.length != 0)
 {
-    let currentTodoProject = JSON.parse(localStorage.getItem("savedCurrentProject"));
-
-    if(!currentTodoProject)
-    {
-        displayAllTodo("Inbox");
-    }
-    else{
-        displayAllTodo(currentTodoProject.projectName, false);
-    }
+    displayAllTodo(currentProject.projectName, currentProject.isOther);
 }
 
 addTodo.addEventListener("click", showTodoDialog);
@@ -49,24 +41,23 @@ function getTodoInfo()
     const todoPriority = document.querySelector("#select-priority").value;
     const todoDueDate = document.querySelector("#due-date").value;
     const dueDate = parseISO(todoDueDate);
-    const projectName = document.querySelector("#project-title").textContent;
 
     if(todoName == "")
     {
         return;
     }
 
-    createTodo(todoName,todoDescript,todoPriority,dueDate,crypto.randomUUID(), projectName);
+    createTodo(todoName,todoDescript,todoPriority,dueDate,crypto.randomUUID());
 
     todoForm.reset();
 }
 
-function createTodo(name,description,priority,dueDate, id, section)
+function createTodo(name,description,priority,dueDate, id)
 {
 
-    let newTodo = new Todo(name,description,priority,dueDate,id,section);
+    let newTodo = new Todo(name,description,priority,dueDate,id);
 
     todos.push(newTodo);
     changeLocalStorage("savedTodos", todos);
-    displayAllTodo(section);
+    displayAllTodo(currentProject.projectName, currentProject.isOther);
 }

@@ -13,14 +13,27 @@ if (!localStorage.getItem("savedTodos")) {
 }
 
 if (!localStorage.getItem("savedProjects")) {
-    localStorage.setItem("savedProjects", JSON.stringify([]));
+    localStorage.setItem("savedProjects", JSON.stringify([
+        {projectName: "Today",
+        projectId: 1,
+        isOther: true},
+        {projectName: "Week",
+        projectId: 1,
+        isOther: true},
+        {projectName: "Month",
+        projectId: 1,
+        isOther: true},
+        {projectName: "Inbox",
+        projectId: 1,
+        isOther: false}
+    ]));
 }
 
 export let todos = JSON.parse(localStorage.getItem("savedTodos") || "[]");
 
 export let projects = JSON.parse(localStorage.getItem("savedProjects") || "[]");
 
-export let currentProject = JSON.parse(localStorage.getItem("savedCurrentProject")) || { projectName: "Inbox", projectId: null };
+export let currentProject = JSON.parse(localStorage.getItem("savedCurrentProject")) || { projectName: "Inbox", projectId: 1, isOther: false };
 
 export let todoNumber = parseInt(localStorage.getItem("numberOfTodos"),10);
 

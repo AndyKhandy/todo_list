@@ -9,6 +9,7 @@ export function setCurrentProject(projectObject)
 
     currentProject.projectName = projectObject.projectName;
     currentProject.projectId = projectObject.projectId || null;
+    currentProject.isOther = projectObject.isOther;
 
     projectTitle.textContent = currentProject.projectName;
 

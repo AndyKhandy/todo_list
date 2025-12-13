@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AndyKhandy/webpack_template.git"
+    "url": "git+https://github.com/AndyKhandy/todo_list.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AndyKhandy/webpack_template/issues"
+    "url": "https://github.com/AndyKhandy/todo_list/issues"
   },
-  "homepage": "https://github.com/AndyKhandy/webpack_template#readme",
+  "homepage": "https://github.com/AndyKhandy/todo_list#readme",
   "devDependencies": {
     "css-loader": "^7.1.2",
     "html-loader": "^5.1.0",

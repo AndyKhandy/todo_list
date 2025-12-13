@@ -47,15 +47,15 @@ function getTodoInfo()
         return;
     }
 
-    createTodo(todoName,todoDescript,todoPriority,dueDate,crypto.randomUUID());
+    createTodo(todoName,todoDescript,todoPriority,dueDate,crypto.randomUUID(), currentProject.projectName);
 
     todoForm.reset();
 }
 
-function createTodo(name,description,priority,dueDate, id)
+function createTodo(name,description,priority,dueDate, id, sectionName)
 {
 
-    let newTodo = new Todo(name,description,priority,dueDate,id);
+    let newTodo = new Todo(name,description,priority,dueDate,id, sectionName);
 
     todos.push(newTodo);
     changeLocalStorage("savedTodos", todos);

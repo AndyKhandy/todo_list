@@ -3,6 +3,7 @@ import { changeLocalStorage } from "./localStorage.js";
 
 export function setCurrentProject(projectObject)
 {
+
     const allProjectTabs = document.querySelectorAll(".sidebar-tab");
     const projectTitle = document.querySelector("#project-title");
 

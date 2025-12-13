@@ -2,6 +2,7 @@ import { setCurrentProject } from "./currentProject.js";
 import { projects } from "./data.js";
 import { displayAllTodo } from "./displayTodo.js";
 import { changeLocalStorage } from "./localStorage.js";
+import { removeSideBar } from "../index.js";
 
 export function displayAllProjects()
 {
@@ -38,6 +39,7 @@ export function displayNewProject(project)
     sidebarTab.addEventListener("click", ()=>{
         setCurrentProject(project);
         displayAllTodo(project.projectName, false);
+        removeSideBar();
     });
 }
 

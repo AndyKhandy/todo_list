@@ -17,6 +17,7 @@ inboxTab.addEventListener("click", () => {
         projectId: null
     };
 
+    removeSideBar();
     setCurrentProject(inboxObject);
     displayAllTodo("Inbox");
 });
@@ -32,6 +33,7 @@ todayTab.addEventListener("click", ()=>{
         projectId: 1,
     };
 
+    removeSideBar();
     setCurrentProject(todayObject);
     displayAllTodo("Today", true);
 });
@@ -43,6 +45,7 @@ weekTab.addEventListener("click", ()=>{
         projectId: 1,
     };
 
+    removeSideBar();
     setCurrentProject(weekObject);
     displayAllTodo("Week", true);
 });
@@ -53,6 +56,27 @@ monthTab.addEventListener("click", ()=>{
         projectId: 1,
     };
 
+    removeSideBar();
     setCurrentProject(monthObject);
     displayAllTodo("Month", true);
 });
+
+//SIDEBAR SHOWN / HIDE SECTION
+
+const menuBtn = document.querySelector("#menu");
+const closeBtn = document.querySelector("#close-sidebar");
+export const sidebar = document.querySelector(".sidebar");
+
+menuBtn.addEventListener("click", toggleSideBar);
+closeBtn.addEventListener("click", toggleSideBar)
+
+function toggleSideBar()
+{
+    closeBtn.classList.toggle("active");
+    sidebar.classList.toggle("active");
+}
+
+export function removeSideBar()
+{
+    sidebar.classList.remove("active");
+}

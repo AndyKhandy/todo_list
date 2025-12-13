@@ -9,6 +9,8 @@
     --secondary-color: rgb(46, 200, 108);
     --sidebar-hover: rgba(34, 165, 34, 0.408);
     --circle: 50%;
+    --medium-font-size: clamp(16px, 0.5rem + 1vw ,25px);
+    --svg-width-size: clamp(20px, 1rem + 1.1vw ,30px)
 }
 
 :root.togepi {
@@ -38,6 +40,10 @@
 
 body{
      font-family: "Ubuntu";
+}
+
+h2{
+    font-size: var(--medium-font-size);
 }
 
 #title{
@@ -75,6 +81,18 @@ header{
     background-position: center;
     opacity: 0.7;
     filter: grayscale(0.7);
+}
+
+#menu {
+    width: auto;
+    height: auto;
+    visibility: hidden;
+}
+
+#menu svg {
+    width: var(--svg-width-size);
+    fill: white;
+    stroke: white;
 }
 
 .right-header button:hover {
@@ -130,9 +148,9 @@ form {
     width: 100%;
 }
 
-form input, textarea, select, label, .displaySection h2 {
+form input, textarea, select, label,  .displaySection h2 {
   font-family: inherit;
-  font-size: 20px;
+  font-size: var(--medium-font-size);
   width: 100%;
   padding: 5px;
   appearance: none;
@@ -150,7 +168,7 @@ form input::placeholder {
 .select  {
     position: absolute;
     bottom: 0px;
-    font-size: 20px;
+    font-size: var(--medium-font-size);
 }
 
 textarea {
@@ -200,12 +218,6 @@ button {
     overflow-y:auto;
 }
 
-.sidebar.hide {
-    width: 0px;
-    padding: 0px;
-    border: none;
-    overflow: hidden;
-}
 
 button, svg, .sidebar-tab {
     cursor: pointer;
@@ -226,7 +238,7 @@ button, svg, .sidebar-tab {
 }
 
 svg {
-    width: 30px;
+    width: var(--svg-width-size);
     transition: 1s;
 }
 
@@ -242,6 +254,7 @@ svg {
 
 .delete-project {
     position: absolute;
+    top: 2%;
     right: 10px;
 }
 
@@ -283,10 +296,23 @@ svg {
 /*TODOS SECTION*/
 
 .project-heading, .todo {
-    width: 75%;
+    width: min(1400px,75%);
     padding: 10px;
     justify-content: space-between;
     margin-top: 2px;
+}
+
+#close-sidebar {
+    position: absolute;
+    right: 4%;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+#close-sidebar.active {
+    visibility: visible;
+    opacity: 1;
 }
 
 #amount-todo {
@@ -350,4 +376,51 @@ svg {
     --icon-color: red;
 }
 
+
+@media screen and (max-width: 1100px) {
+    .project-heading, .todo {
+    width: max(300px,90%);
+    }
+}
+
+@media screen and (max-width: 950px)
+{
+    .main-content {
+    --medium-font-size: 20px;
+    --svg-width-size: 30px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "todo";
+    }   
+
+    .sidebar{
+    grid-area: none;
+    width: 0%;
+    position: absolute;
+    right: 0px;
+    opacity: 0;
+    transition: 0.5s;
+    }
+
+    #menu, .sidebar.active {
+        visibility: visible;
+    }
+
+    .sidebar.active {
+        width: 90%;
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 800px)
+{
+    header {
+        flex-direction: column;
+    }
+
+    header .right-header {
+        margin-top: 10px;
+    }
+}
 

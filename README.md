@@ -1,0 +1,1 @@
+A project made following the Odin Project Curriculum. This project features the use of HTML, CSS, JS, and the bundler WebPack. Like all my other projects, this is heavily Pokémon-inspired, and I hope you like it! 

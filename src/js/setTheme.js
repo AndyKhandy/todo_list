@@ -15,40 +15,37 @@ let startingTheme = localStorage.getItem("savedThemeId") || "rowlet";
 
 changeTheme(startingTheme);
 
-rowletBtn.addEventListener("click", (e)=>{
-    changeTheme(e.target.id);
+rowletBtn.addEventListener("click", (e) => {
+  changeTheme(e.target.id);
 });
 
-vulpixBtn.addEventListener("click", (e)=>{
-    changeTheme(e.target.id);
+vulpixBtn.addEventListener("click", (e) => {
+  changeTheme(e.target.id);
 });
 
-togepiBtn.addEventListener("click", (e)=>{
-    changeTheme(e.target.id);
+togepiBtn.addEventListener("click", (e) => {
+  changeTheme(e.target.id);
 });
 
-function changeTheme(id)
-{
-    let newPfp = null;
-    let newTitle = null;
+function changeTheme(id) {
+  let newPfp = null;
+  let newTitle = null;
 
-    root.className = "";
-    if(id == "vulpix"){
-        root.classList.add("vulpix");
-        newTitle = "Vulpix a Task";
-        newPfp = vulpixImg;
-    }
-    else if(id == "togepi"){
-        root.classList.add("togepi");
-        newPfp = togepiImg;
-        newTitle = "Togepi that Task";
-    }
-    else{
-       newPfp = rowletImg;
-       newTitle = "Row-lets Do";
-    }
-    siteTitle.textContent = `| ${newTitle} |`;
-    headingTitle.textContent = newTitle;
-    profilePicture.src = newPfp;
-    localStorage.setItem("savedThemeId", id);
+  root.className = "";
+  if (id == "vulpix") {
+    root.classList.add("vulpix");
+    newTitle = "Vulpix a Task";
+    newPfp = vulpixImg;
+  } else if (id == "togepi") {
+    root.classList.add("togepi");
+    newPfp = togepiImg;
+    newTitle = "Togepi that Task";
+  } else {
+    newPfp = rowletImg;
+    newTitle = "Row-lets Do";
+  }
+  siteTitle.textContent = `| ${newTitle} |`;
+  headingTitle.textContent = newTitle;
+  profilePicture.src = newPfp;
+  localStorage.setItem("savedThemeId", id);
 }

@@ -61,7 +61,7 @@
             </div>
 
             <label for="due-date">Due Date</label>
-            <input type="datetime-local" name="due-date" id="due-date" required>
+            <input type="datetime-local" name="due-date" id="due-date">
 
             <div class="buttons">
                 <button type="buton" class="close" formnovalidate>Cancel</button>
@@ -111,9 +111,14 @@
 
     <div class="main-content">
 
-        <div class="sidebar flex flex-col ">
+        <button id="large-show-sidebar">
+           <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#e3e3e3"><path d="M460-320v-320L300-480l160 160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm440-80h120v-560H640v560Zm-80 0v-560H200v560h360Zm80 0h120-120Z"/></svg>
+        </button>
+
+        <div class="sidebar flex flex-col">
 
             <div class="sidebar-project-section flex flex-col">
+
 
                 <div class="sidebar-project-title flex flex-ali">
 
@@ -125,6 +130,10 @@
                 <button id="close-sidebar">
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
                 </button>        
+
+                <button id="large-close-sidebar">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#e3e3e3"><path d="M660-320v-320L500-480l160 160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm120-80v-560H200v560h120Zm80 0h360v-560H400v560Zm-80 0H200h120Z"/></svg>
+                </button>
                 </div>
 
                 <button id="clearStorage">Clear Local Storage</button>

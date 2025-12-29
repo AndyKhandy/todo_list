@@ -12,25 +12,40 @@ import "./js/createTodo.js";
 
 const menuBtn = document.querySelector("#menu");
 const closeBtn = document.querySelector("#close-sidebar");
+
+const hideSidebarBtn = document.querySelector("#large-close-sidebar");
+const showSidebarBtn = document.querySelector("#large-show-sidebar");
+
 export const sidebar = document.querySelector(".sidebar");
 
 menuBtn.addEventListener("click", toggleSideBar);
-closeBtn.addEventListener("click", toggleSideBar)
+closeBtn.addEventListener("click", toggleSideBar);
 
-function toggleSideBar()
-{
-    closeBtn.classList.toggle("active");
-    sidebar.classList.toggle("active");
+hideSidebarBtn.addEventListener("click", ()=>{
+  sidebar.classList.add("hide");
+  showSidebarBtn.classList.add("active");
+});
+
+showSidebarBtn.addEventListener("click", ()=>{
+  sidebar.classList.remove("hide");
+  showSidebarBtn.classList.remove("active");
+})
+
+function toggleSideBar() {
+  sidebar.classList.remove("hide");
+  closeBtn.classList.toggle("active");
+  sidebar.classList.toggle("active");
 }
 
-export function removeSideBar()
-{
-    sidebar.classList.remove("active");
+export function removeSideBar() {
+  sidebar.classList.remove("hide");
+  closeBtn.classList.remove("active");
+  sidebar.classList.remove("active");
 }
 
 //DELETE LOCAL STORAGE
-const clearStorage = document.querySelector("#clearStorage")
+const clearStorage = document.querySelector("#clearStorage");
 
-clearStorage.addEventListener("click", ()=>{
-    localStorage.clear();
-})
+clearStorage.addEventListener("click", () => {
+  localStorage.clear();
+});

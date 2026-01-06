@@ -254,7 +254,13 @@ button, #clearStorage {
     top: 11.5%;
     left: -1px;
     visibility: hidden;
+    opacity: 0.2;
 }
+
+#large-show-sidebar svg:hover {
+    opacity: 1;
+}
+
 
 #large-show-sidebar.active svg{
     visibility: visible;

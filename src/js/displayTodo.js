@@ -1,6 +1,7 @@
 // src/js/displayTodo.js
 import { todos as todoList } from "./data.js";
 import { finishTodo, openEditDialog, deleteTodo } from "./changeTodo.js";
+import { formatDistanceStrict, isBefore } from "date-fns";
 import { changeTodoNumber } from "./data.js";
 export const todosSection = document.querySelector(".todos");
 
@@ -16,11 +17,11 @@ export function displayAllTodo(projectName, isOtherTab) {
         displayNewTodo(todo);
       }
     } else {
-      if(todo.dueDate == null)
-      {
+      if (todo.dueDate == null || isBefore(todo.dueDate, new Date())) {
         continue;
       }
 
+      todo.timeTilDue = formatDistanceStrict(new Date(), todo.dueDate);
       let splitDateMsg = todo.timeTilDue.split(" ");
       let [numberString, identifier] = splitDateMsg;
       let number = +numberString;
@@ -32,11 +33,11 @@ export function displayAllTodo(projectName, isOtherTab) {
           identifier == "minutes" ||
           identifier == "seconds"
         ) {
-          displayNewTodo(todo);
+          displayNewTodo(todo, "high");
         }
       } else if (projectName == "Week") {
         if (!(identifier == "days" && number > 7)) {
-          displayNewTodo(todo);
+          displayNewTodo(todo, "med");
         }
       } else {
         displayNewTodo(todo);
@@ -46,7 +47,7 @@ export function displayAllTodo(projectName, isOtherTab) {
   changeTodoNumber(count);
 }
 
-export function displayNewTodo(todo) {
+export function displayNewTodo(todo, urgency = todo.priority) {
   const newTodoSection = document.createElement("div");
   newTodoSection.classList.add("todo", "flex", "flex-ali");
   newTodoSection.dataset.id = todo.id;
@@ -59,6 +60,16 @@ export function displayNewTodo(todo) {
 
   const priority = document.createElement("div");
   priority.classList.add("priority");
+
+  //overide user priority input if it's due today and they are in the today projects tab
+  if (urgency == "high") {
+    todo.priority = "high";
+  }
+  else if(urgency == "med")
+  {
+    todo.priority = "med";
+  }
+
   priority.innerHTML = `<p>${todo.priority}</p>`;
   changePriorityColor(priority, todo.priority);
 
@@ -74,11 +85,21 @@ export function displayNewTodo(todo) {
 
   const dueParagraph = document.createElement("p");
 
-  if(todo.dueDate != null)
-  {
-    dueParagraph.textContent = `Due in ${todo.timeTilDue}`;
-  }
-  else{
+  if (todo.dueDate != null) {
+    todo.timeTilDue = formatDistanceStrict(new Date(), todo.dueDate);
+    if (isBefore(todo.dueDate, new Date())) {
+      //if it's past due date make it high priority
+      if (todo.priority != "high") {
+        todo.priority = "high";
+        priority.innerHTML = `<p>${todo.priority}</p>`;
+        changePriorityColor(priority, todo.priority);
+      }
+
+      dueParagraph.textContent = `Past due date by ${todo.timeTilDue}`;
+    } else {
+      dueParagraph.textContent = `Due in ${todo.timeTilDue}`;
+    }
+  } else {
     dueParagraph.textContent = `No Due Date Given`;
   }
 

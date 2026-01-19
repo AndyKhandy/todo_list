@@ -15,7 +15,6 @@ class Todo {
     this.id = id;
     this.section = section;
     this.completed = false;
-    this.timeTilDue = formatDistanceStrict(new Date(), dueDate);
   }
 }
 

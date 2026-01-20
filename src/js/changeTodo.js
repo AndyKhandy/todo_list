@@ -1,7 +1,7 @@
 import { currentProject, todos } from "./data.js";
 import { changeLocalStorage } from "./localStorage.js";
 import { format, formatDistanceStrict, parseISO } from "date-fns";
-import { displayAllTodo } from "./displayTodo.js";
+import { displayAllTodo, noTodosSection } from "./displayTodo.js";
 
 const todoName = document.querySelector("#edit-name");
 const todoDescription = document.querySelector("#edit-description");
@@ -35,9 +35,14 @@ changeTodo.addEventListener("click", (e) => {
 });
 
 /*DELETE TODO SECTION*/
-export function deleteTodo(todoSection) {
+
+export function deleteTodo(todoSection, count) {
   removeTodoFromList(todoSection);
   todoSection.remove();
+  if(count == 0)
+  {
+    noTodosSection.classList.add("active");
+  }
 }
 
 function removeTodoFromList(todoSection) {

@@ -425,6 +425,31 @@ svg {
     --icon-color: red;
 }
 
+/*NO TODOS SECTION*/
+
+.no-todos {
+    margin-top: 10vh;
+    display: none;
+}
+
+.no-todos.active{
+    display: flex;
+}
+
+.no-todos img {
+    width: 350px;
+    height: 350px;
+    margin-bottom: 20px;
+}
+
+.no-todos h1{
+    font-size: clamp(25px, 0.5rem + 1.7vw, 40px);
+    font-weight: bolder;
+}
+
+.no-todos p{
+    font-size: clamp(15px, 0.3rem + 1.1vw, 20px);
+}
 
 @media screen and (max-width: 1100px) {
     .project-heading, .todo {

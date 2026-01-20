@@ -1,7 +1,7 @@
-import { displayAllTodo } from "./displayTodo.js";
+import { displayAllTodo, noTodosSection } from "./displayTodo.js";
 import { changeLocalStorage } from "./localStorage.js";
 import { todos, currentProject } from "./data.js";
-import { parseISO, formatDistanceStrict } from "date-fns";
+import { parseISO } from "date-fns";
 
 const addTodo = document.querySelector("#add-todo");
 const todoForm = document.querySelector("#create-todo-form");

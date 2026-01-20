@@ -1,5 +1,4 @@
-import { formatDistanceStrict } from "date-fns";
-import { nextFriday } from "date-fns";
+import { formatDistanceStrict, nextFriday} from "date-fns";
 
 if (!localStorage.getItem("savedTodos")) {
   localStorage.setItem(
@@ -9,21 +8,19 @@ if (!localStorage.getItem("savedTodos")) {
         name: "Eat your veggies",
         description: "desc",
         priority: "low",
-        dueDate: new Date(),
+        dueDate: nextFriday(new Date()),
         id: "1",
         section: "Inbox",
         completed: false,
-        timeTilDue: formatDistanceStrict(new Date(), nextFriday(new Date())),
       },
       {
         name: "Play Valorant",
         description: "desc",
         priority: "low",
-        dueDate: new Date(),
+        dueDate: nextFriday(new Date()),
         id: "2",
         section: "Inbox",
         completed: false,
-        timeTilDue: formatDistanceStrict(new Date(), nextFriday(new Date())),
       },
     ])
   );

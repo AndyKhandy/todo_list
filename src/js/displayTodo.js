@@ -4,6 +4,7 @@ import { finishTodo, openEditDialog, deleteTodo } from "./changeTodo.js";
 import { formatDistanceStrict, isBefore } from "date-fns";
 import { changeTodoNumber } from "./data.js";
 export const todosSection = document.querySelector(".todos");
+export const noTodosSection = document.querySelector(".no-todos");
 
 let count = 0;
 
@@ -45,6 +46,13 @@ export function displayAllTodo(projectName, isOtherTab) {
     }
   }
   changeTodoNumber(count);
+  if(!count)
+  {
+    noTodosSection.classList.add("active");
+  }
+  else{
+    noTodosSection.classList.remove("active");
+  }
 }
 
 export function displayNewTodo(todo, urgency = todo.priority) {
@@ -60,15 +68,6 @@ export function displayNewTodo(todo, urgency = todo.priority) {
 
   const priority = document.createElement("div");
   priority.classList.add("priority");
-
-  //overide user priority input if it's due today and they are in the today projects tab
-  if (urgency == "high") {
-    todo.priority = "high";
-  }
-  else if(urgency == "med")
-  {
-    todo.priority = "med";
-  }
 
   priority.innerHTML = `<p>${todo.priority}</p>`;
   changePriorityColor(priority, todo.priority);
@@ -132,10 +131,10 @@ export function displayNewTodo(todo, urgency = todo.priority) {
   });
 
   deleteBtn.addEventListener("click", () => {
-    deleteTodo(newTodoSection);
     if (!todo.completed) {
       changeTodoNumber(--count);
     }
+    deleteTodo(newTodoSection, count);
   });
 
   if (todo.completed) {
